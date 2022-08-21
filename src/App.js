@@ -1,17 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+
 /*
 import {
-  Switch
-}from "react-router";
-*/
-import {
   BrowserRouter as Router,
-  Route,
   Switch,
+  Route,
   Link
 } from "react-router-dom";
+*/
+
+import { Routes, Route} from "react-router-dom";
 
 import ChatPage from './components/ChatPage/ChatPage';
 import LoginPage from './components/LoginPage/LoginPage';
@@ -20,13 +20,11 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 
 function App() {
   return (
-    <Router>
-        <Switch>
-          <Route exact path="/" component={ChatPage} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/register" component={RegisterPage} />
-        </Switch>
-    </Router> 
+        <Routes>
+            <Route path="/" element={<ChatPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+        </Routes>
   );
 }
 
