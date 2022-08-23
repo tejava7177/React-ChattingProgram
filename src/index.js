@@ -8,21 +8,22 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 
-import{Provider} from 'react-redux';
+import{Provider} from 'react-redux';      //redux 연결
 import{createStore, applyMiddleware} from 'redux';
 import promiseMiddleware from 'redux';
 import ReduxThunk from 'redux-thunk';
 import Reducer from './redux/reducers';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);    
+//object 뿐만 아니라 function, promise도 접근 할 수 있는 Middleware 생성
 
 root.render(
   <React.StrictMode>
     <Router>
-      <Provider store={createStoreWithMiddleware(
+      <Provider store={createStoreWithMiddleware(         //redux에 store를 생성
         Reducer,
-        window.__REDUX_DEVTOOLS_EXTENSION__&&
+        window.__REDUX_DEVTOOLS_EXTENSION__&&             //redux를 편하게 사용할 수 있는 tools
         window.__REDUX_DEVTOOLS_EXTENSION__()
         )}>
         <App />
